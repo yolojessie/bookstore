@@ -1,0 +1,6 @@
+<form class="inlineBlock" action="{% url 'guess:guess' %}">
+      請猜一個 0~9 的數字:<input type="number" name="guessNum" placeholder="0~9">
+      <input class="btn" type="submit" value="送出">
+      <a class="btn" href="{% url 'main:main' %}">返回</a>
+    </form>
+    

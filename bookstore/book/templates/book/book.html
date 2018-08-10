@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+>
+   {% block title %}本店藏書{% endblock %}
+   
+     {% block css %}
+    <link rel="stylesheet" href="{% static 'book/css/book.css' %}">
+    {% endblock %}
+    {% block time %}{% endblock %}
+   {% block heading %}本店藏書{% endblock %}
+    {% block content %}
+    <br> 
+    {% include 'main/messages.html' %}
+    {% include 'book/searchForm.html' %}
+    {% if user.is_superuser %}
+    <p class="inlineBlock"><a class="btn" href="{% url 'book:bookCreate' %}">新增書籍</a></p>
+    {% endif %}
+    <br><br><hr>
+    <table class="table table-striped table-hover">
+    <tr>
+      <th>書名</th>
+      <th>作者</th>
+      <th>出版商</th>
+      <th>版次</th>
+      <th>價格</th>
+      <th>出版時間</th>
+      <th>庫存</th>
+    </tr>
+    {% for bkName in bkNames %}
+    <tr class="trcolor">
+     <td class="tdcolor"><a class="inlineBlock" href="{% url 'book:bookRead' bkName.id %}">{{ bkName.bkName }}</a>
+     {% if user.is_superuser %}
+      <form class="inlineBlock" method="post" action="{% url 'book:bookDelete' bkName.id %}">
+        {% csrf_token %}
+        <input class="btn deleteConfirm" type="submit" value="刪除">
+      </form>
+      {% endif %}
+     </td>
+     <td>{{ bkName.authorName }}</td>
+     <td>{{ bkName.publisher }}</td>
+     <td>{{ bkName.pubversion }}</td>
+     <td>{{ bkName.price }}</td>
+     <td>{{ bkName.pubDateTime|date:'Y-m-d H:i' }}</td>
+     <td>{{ bkName.inventory }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+  {% endblock %} 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src={% static 'main/js/deleteConfirm.js' %}></script>
+    
+  

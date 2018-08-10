@@ -1,0 +1,5 @@
+<form class="inlineBlock" action="{% url 'book:bookSearch' %}">
+      <input type="text" name="searchTerm" {% if searchTerm %}value="{{ searchTerm }}"{% endif %} placeholder="書名">
+      <input type="number" name="minPrice" {% if minPrice %}value="{{ minPrice }}"{% endif %} placeholder="最低價格">
+      <input class="btn" type="submit" value="查詢">
+    </form>

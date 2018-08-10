@@ -1,0 +1,12 @@
+{% extends "main/base.html" %}
+{% block title %}註冊{% endblock %}
+ {% block css %}{% endblock %} 
+   {% block time %}{% endblock %}
+{% block heading %}註冊{% endblock %}
+{% block content %}
+<form method="post" action="{% url 'account:register' %}">
+  {% csrf_token %}
+  {{ userForm.as_p }}
+  <input class="btn" type="submit" value="送出">
+</form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+{% block title %}BookStore{% endblock %}
+{% block css %}{% endblock %} 
+{% block time %}
+<h1>現在時間 : {{now}}  
+    {% if hour > 11 %}
+    午安
+    {% else %}
+    早安
+    {% endif %}
+    </h1>
+{% endblock %}    
+{% block heading %}
+歡迎光臨本書店
+{% endblock %}
+{% block content %}{% endblock %}
+   

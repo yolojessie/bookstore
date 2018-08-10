@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+{% block title %}猜數字{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'book/css/book.css' %}">{% endblock %}
+{% block time %}{% endblock %}
+{% include 'main/menu.html' %}
+{% block heading %}猜數字遊戲{% endblock %}
+{% block content %}
+{% include 'guess/guessForm.html' %}
+{% endblock %}
+<h3>
+{{ solution }}
+</h3>
+  

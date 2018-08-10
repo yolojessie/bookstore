@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+{% block title %}本店藏書{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'book/css/book.css' %}">{% endblock %}
+{% block time %}{% endblock %}
+{% block content %}
+{% if bookForm.instance.id %}
+{% block heading %}修改書籍{% endblock %}
+<form method="post" action="{% url 'book:bookUpdate' bookForm.instance.id %}">  
+{% else %}
+<h2>新增書籍</h2>
+<form method="post" action="{% url 'book:bookCreate' %}">
+{% endif %}  
+  {% csrf_token %}
+  {{ bookForm.as_p }}
+  <input class="btn" type="submit" value="送出">
+  <a class="btn" href="{% url 'book:book' %}">放棄</a>
+</form>
+{% endblock %}
+ 

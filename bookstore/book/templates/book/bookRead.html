@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+{% block title %}書籍資訊{% endblock %}
+{% block css %}
+ <link rel="stylesheet" href="{% static 'book/css/book.css' %}">
+{% endblock %}   
+    {% include 'main/messages.html' %}
+    {% block heading %}{% endblock %}
+    {% block content %}
+    <h3 class="inlineBlock">{{ book.bkName }}</h3>
+    {% if user.is_superuser %}
+    <a class="btn inlineBlock" href="{% url 'book:bookUpdate' book.id %}">修改</a>
+    {% endif %}
+    <p>出版時間：{{ book.pubDateTime|date:'Y-m-d H:i' }}</p>
+    <p>作者:{{ book.authorName }}</p>
+    <p>出版商:{{ book.publisher }}</p>
+    <p>版次:{{ book.pubversion }}</p>
+    <p>價格:{{ book.price }}</p>
+    <p><a class="btn inlineblock" id="buy" href="{% url 'book:booksold' book.id %}">BUY</a>
+    售出:{{ book.sold.count }}
+    </p>
+    <p>庫存:{{ book.inventory }}</p>
+  {% endblock %}

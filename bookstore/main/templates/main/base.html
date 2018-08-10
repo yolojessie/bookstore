@@ -1,0 +1,17 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'main/css/main3.css' %}">
+   {% block css %}{% endblock %} 
+   {% block time %}{% endblock %}
+  </head>
+  <body>
+    {% include 'main/menu.html' %}
+    {% include 'main/messages.html' %}
+    <h2>{% block heading %}{% endblock %}</h2>
+    {% block content %}{% endblock %}
+  </body>
+</html>
