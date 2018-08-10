@@ -22,6 +22,6 @@ urlpatterns = [
     path('book/', include('book.urls', namespace='book')),
     path('main/', include('main.urls', namespace='main')),
     path('guess/', include('guess.urls', namespace='guess')),
-    path('account', include('account.urls', namespace='account')),
+    path('account/', include('account.urls', namespace='account')),
     re_path('.*', views.main),
 ]
