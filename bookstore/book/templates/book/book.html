@@ -9,8 +9,7 @@
     {% block time %}{% endblock %}
    {% block heading %}本店藏書{% endblock %}
     {% block content %}
-    <br> 
-    {% include 'main/messages.html' %}
+    <br>  
     {% include 'book/searchForm.html' %}
     {% if user.is_superuser %}
     <p class="inlineBlock"><a class="btn" href="{% url 'book:bookCreate' %}">新增書籍</a></p>
